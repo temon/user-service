@@ -1,4 +1,4 @@
-package user.service;
+package com.sewonlab.microservice.user;
 
 import io.micronaut.runtime.Micronaut;
 

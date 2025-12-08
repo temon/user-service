@@ -1,4 +1,4 @@
-package user.service;
+package com.sewonlab.microservice.user;
 
 import io.micronaut.runtime.EmbeddedApplication;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;

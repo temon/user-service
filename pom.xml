@@ -20,7 +20,7 @@
     <micronaut.aot.enabled>false</micronaut.aot.enabled>
     <micronaut.aot.packageName>user.service.aot.generated</micronaut.aot.packageName>
     <micronaut.runtime>netty</micronaut.runtime>
-    <exec.mainClass>user.service.Application</exec.mainClass>
+    <exec.mainClass>com.sewonlab.microservice.user.Application</exec.mainClass>
   </properties>
 
   <repositories>
