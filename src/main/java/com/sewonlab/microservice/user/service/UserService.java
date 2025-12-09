@@ -1,5 +1,6 @@
 package com.sewonlab.microservice.user.service;
 
+import com.sewonlab.microservice.user.exception.UserNotFoundException;
 import com.sewonlab.microservice.user.model.User;
 import jakarta.inject.Singleton;
 
@@ -23,7 +24,8 @@ public class UserService {
     public User getUser(Integer id) {
         return users.stream()
                 .filter(user -> user.getId() == id)
-                .findFirst().orElse(null);
+                .findFirst()
+                .orElseThrow(UserNotFoundException::new);
     }
 
     public User updateUser(Integer id, User user) {
