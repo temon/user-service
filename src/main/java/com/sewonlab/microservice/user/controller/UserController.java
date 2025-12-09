@@ -4,6 +4,7 @@ import com.sewonlab.microservice.user.model.User;
 import com.sewonlab.microservice.user.service.UserService;
 import io.micronaut.http.HttpResponse;
 import io.micronaut.http.annotation.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class UserController {
     }
 
     @Post
-    public HttpResponse<User> createUser(@Body User user) {
+    public HttpResponse<User> createUser(@Body @Valid User user) {
         return HttpResponse.created(userService.create(user));
     }
 
@@ -32,7 +33,7 @@ public class UserController {
     }
 
     @Put("/{id}")
-    public HttpResponse<User> updateUser(@PathVariable Integer id, @Body User user) {
+    public HttpResponse<User> updateUser(@PathVariable Integer id, @Body @Valid User user) {
         return HttpResponse.ok(userService.updateUser(id, user));
     }
 
