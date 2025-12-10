@@ -1,0 +1,22 @@
+micronaut:
+  application:
+    name: userService
+  server:
+    port: 8080
+
+datasources:
+  default:
+    url: jdbc:mysql://localhost:3306/user_db
+    username: user
+    password: pass
+    driverClassName: com.mysql.cj.jdbc.Driver
+    schema-generate: CREATE_DROP
+    dialect: MYSQL
+
+jpa:
+  default:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        sho_sql: true

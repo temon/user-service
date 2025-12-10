@@ -2,6 +2,7 @@ package com.sewonlab.microservice.user.service;
 
 import com.sewonlab.microservice.user.exception.UserNotFoundException;
 import com.sewonlab.microservice.user.model.User;
+import com.sewonlab.microservice.user.repository.UserRepository;
 import jakarta.inject.Singleton;
 
 import java.util.ArrayList;
@@ -10,22 +11,22 @@ import java.util.List;
 @Singleton
 public class UserService {
 
-    private List<User> users = new ArrayList<>();
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     public User create(User user) {
-        users.add(user);
-        return user;
+        return userRepository.save(user);
     }
 
     public List<User> getAllUsers() {
-        return users;
+        return userRepository.findAll();
     }
 
     public User getUser(Integer id) {
-        return users.stream()
-                .filter(user -> user.getId() == id)
-                .findFirst()
-                .orElseThrow(UserNotFoundException::new);
+        return  userRepository.findById(id).orElseThrow(UserNotFoundException::new);
     }
 
     public User updateUser(Integer id, User user) {
@@ -33,10 +34,10 @@ public class UserService {
         oldUser.setName(user.getName());
         oldUser.setEmail(user.getEmail());
         oldUser.setMobileNumber(user.getMobileNumber());
-        return oldUser;
+        return userRepository.update(oldUser);
     }
 
     public void deleteUser(Integer id) {
-        users.removeIf(user -> user.getId() == id);
+        userRepository.deleteById(id);
     }
 }
