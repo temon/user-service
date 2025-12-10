@@ -5,7 +5,6 @@ import com.sewonlab.microservice.user.model.User;
 import com.sewonlab.microservice.user.repository.UserRepository;
 import jakarta.inject.Singleton;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Singleton
